@@ -1,0 +1,6 @@
+.ipynb_checkpoints/
+data/MNIST/raw
+data/**/*.jpg
+data/**/*.csv
+runs/
+saved_models/
