@@ -10,10 +10,11 @@ mkdir model_dir
 ### Metmusem 
 ```bash
 mkdir -p data/metmuseum
-wget 'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetObjects.csv' -O data/metmuseum/MetObjects.csv
+wget 'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetObjects.csv' \ 
+  -O data/metmuseum/MetObjects.csv
 ```
 ### MNIST
-1. Download the [MNIST as \.jpg dataset](https://www.kaggle.com/datasets/scolianni/mnistasjpg) (Kaggle account required) - saved as `archive.zip`
+1. Download the [MNIST as \.jpg dataset](https://www.kaggle.com/datasets/scolianni/mnistasjpg) (Kaggle account required) - will be saved as `archive.zip`
 2. Extract to data dir:
 ```bash
 mkdir -p data/MNIST/raw
