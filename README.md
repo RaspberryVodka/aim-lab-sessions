@@ -9,7 +9,7 @@ mkdir model_dir
 ## Getting datasets
 ### Metmusem 
 ```bash
-mkdir -p data/metmusem
+mkdir -p data/metmuseum
 wget 'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetObjects.csv' -O data/metmuseum/MetObjects.csv
 ```
 ### MNIST
@@ -18,9 +18,8 @@ wget 'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetO
 ```bash
 mkdir -p data/MNIST/raw
 unzip archive.zip -d data/MNIST/raw
-rm testSet.tar.gz trainingSet.tar.gz  #  Remove intermediate files
-mv data/MNIST/trainingSet/trainingSet/ data/MNIST/raw
-rm -r data/MNIST/testS* data/MNIST/trainingS*
+mv data/MNIST/raw/trainingSet/trainingSet/ data/MNIST/raw
+rm -r data/MNIST/testS* data/MNIST/trainingS* # remove unneeded files
 ```
 3. Create filepath to label mapping:
 ```
