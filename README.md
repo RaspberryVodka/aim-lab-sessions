@@ -1,14 +1,14 @@
 # AIM Lab Session
 
 ## Environment setup
-```bash
+```shell
 pip install -r requirements.txt
 mkdir model_dir
 ```
 
 ## Getting datasets
 ### Metmusem 
-```bash
+```shell
 mkdir -p data/metmuseum
 wget 'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetObjects.csv' \ 
   -O data/metmuseum/MetObjects.csv
