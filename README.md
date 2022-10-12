@@ -23,7 +23,7 @@ mv data/MNIST/trainingSet/trainingSet/* data/MNIST/raw
 rm -r archive.zip data/MNIST/testS* data/MNIST/trainingS* # remove unneeded files
 ```
 3. Create filepath to label mapping:
-```
+```console
 cd data/MNIST && chmod +x create_csv.sh
 ./create_csv.sh raw
 ```
