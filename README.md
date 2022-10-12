@@ -1,14 +1,14 @@
 # AIM Lab Session
 
 ## Environment setup
-```shell
+```console
 pip install -r requirements.txt
 mkdir model_dir
 ```
 
 ## Getting datasets
 ### Metmusem 
-```shell
+```console
 mkdir -p data/metmuseum
 wget 'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetObjects.csv' \ 
   -O data/metmuseum/MetObjects.csv
@@ -16,7 +16,7 @@ wget 'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetO
 ### MNIST
 1. Download the [MNIST as \.jpg dataset](https://www.kaggle.com/datasets/scolianni/mnistasjpg) (Kaggle account required) - will be saved as `archive.zip`
 2. Extract to data dir:
-```bash
+```console
 mkdir -p data/MNIST/raw
 unzip archive.zip -d data/MNIST
 mv data/MNIST/trainingSet/trainingSet/* data/MNIST/raw
