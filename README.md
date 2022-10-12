@@ -17,13 +17,13 @@ wget 'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetO
 2. Extract to data dir:
 ```bash
 mkdir -p data/MNIST/raw
-unzip archive.zip -d data/MNIST/raw
-mv data/MNIST/raw/trainingSet/trainingSet/ data/MNIST/raw
-rm -r data/MNIST/testS* data/MNIST/trainingS* # remove unneeded files
+unzip archive.zip -d data/MNIST
+mv data/MNIST/trainingSet/trainingSet/* data/MNIST/raw
+rm -r archive.zip data/MNIST/testS* data/MNIST/trainingS* # remove unneeded files
 ```
 3. Create filepath to label mapping:
 ```
-cd data/MNIST && chmod +x make_csv.sh
-./make_csv.sh raw
+cd data/MNIST && chmod +x create_csv.sh
+./create_csv.sh raw
 ```
 
