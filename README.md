@@ -3,7 +3,7 @@
 ## Environment setup
 ```console
 pip install -r requirements.txt
-mkdir model_dir
+mkdir model_dir saved_models
 ```
 
 ## Getting datasets
