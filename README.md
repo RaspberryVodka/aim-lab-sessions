@@ -8,10 +8,10 @@ mkdir model_dir saved_models
 
 ## Getting datasets
 ### Metmusem 
+Actually, use this to host the file online: https://www.station307.com/#/
 ```console
 mkdir -p data/metmuseum
-wget 'https://media.githubusercontent.com/media/metmuseum/openaccess/master/MetObjects.csv' \ 
-  -O data/metmuseum/MetObjects.csv
+wget <station307-url> -O data/metmuseum/MetObjects.csv
 ```
 ### MNIST
 1. Download the [MNIST as \.jpg dataset](https://www.kaggle.com/datasets/scolianni/mnistasjpg) (Kaggle account required) - will be saved as `archive.zip`
