@@ -1,8 +1,6 @@
-import-ipynb==0.1.4
 jupyterlab==3.4.5
 matplotlib==3.5.3
 pandas==1.4.3
-pip-chill==1.0.1
 tensorboard==2.10.1
 torchvision==0.13.1
 torchsummary==1.5.1
