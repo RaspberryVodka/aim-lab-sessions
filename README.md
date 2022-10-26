@@ -22,10 +22,10 @@ wget <station307-url> -O mnist.zip
 ```console
 mkdir -p data/MNIST/raw
 unzip mnist.zip -d data/MNIST
+mv data/MNIST/trainingSet/trainingSet/* data/MNIST/raw
 ```
 3. Remove unneeded files
 ```console
-mv data/MNIST/trainingSet/trainingSet/* data/MNIST/raw
 rm -r mnist.zip data/MNIST/testS* data/MNIST/trainingS* 
 ```
 4. Create filepath to label mapping:
