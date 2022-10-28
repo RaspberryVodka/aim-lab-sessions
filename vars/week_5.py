@@ -7,6 +7,7 @@ import torch
 import torchvision.transforms as transforms
 from torch.utils.data import Dataset, DataLoader, random_split
 from PIL import Image
+import PIL
 
 # Week 4 imports
 import torch.nn as nn

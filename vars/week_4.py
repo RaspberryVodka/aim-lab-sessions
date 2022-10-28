@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import torch
 import torchvision.transforms as transforms
 from torch.utils.data import Dataset, DataLoader, random_split
+import PIL
 from PIL import Image
 
 # Week 4 imports
@@ -18,7 +19,7 @@ from torchsummary import summary
 epochs = 5
 batch_sz = 32
 learning_rate = 0.005
-
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # Defining models
 # The Sequential class is very simple: it accepts a sequence of neural network Modules as 

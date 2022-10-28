@@ -11,18 +11,12 @@ import matplotlib.pyplot as plt
 import torch
 import torchvision.transforms as transforms
 from torch.utils.data import Dataset, DataLoader, random_split
+import PIL
 from PIL import Image
 
 
 def custom_collate_fn(batch):
-    # The collate function is used to tell the Pytorch DataLoader how to handle datapoints from the MNISTDataset we 
-    # defined earlier and pack them into a batch. By default (i.e. no specific collate_fn is passed), the DataLoader
-    # would simply add the dataset items to an array and ensure that the array is of a certain size (the batch size).
-    # This would normally not be a problem if we were working with text data that is of a fixed length. However, 
-    # in our case, we are working with image data, and our dataset (so far) does not actually contain the images 
-    # themselves, but filepaths to them, along with labels. For this reason, we must define a custom collate function
-    # that reads these images and their labels into memory, and returns them side-by-side so we can use them in our 
-    # neural network.
+    
     def load_image_tensor(filepath):
         # This funtion is only visible inside custom_collate_fn and does the work of loading a single image into
         # a Pytorch Tensor
@@ -38,12 +32,13 @@ def custom_collate_fn(batch):
     labels = []
     for item in batch:
         image_tensor = load_image_tensor(f"{DATASET_PREFIX}/{item[0]}") # load a single image
+        image_tensor = torch.where(image_tensor<50, 0, image_tensor)
         image_tensors.append(image_tensor) # put image into a list 
         labels.append(item[1]) # put the same image's label into another list
 
 
     torch.cat(image_tensors, out=image_batch_tensor) # torch.cat simply concatenates a list of individual tensors (image_tensors) into a single Pytorch tensor (image_batch_tensor)
-    label_batch_tensor = torch.FloatTensor(labels).type(torch.int64) # use the label list to create a torch tensor of ints
+    label_batch_tensor = torch.LongTensor(labels) # use the label list to create a torch tensor of Long ints
     return (image_batch_tensor, label_batch_tensor)
 
 
