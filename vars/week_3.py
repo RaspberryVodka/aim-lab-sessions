@@ -15,30 +15,29 @@ import PIL
 from PIL import Image
 
 
-def custom_collate_fn(batch):
-    
-    def load_image_tensor(filepath):
-        # This funtion is only visible inside custom_collate_fn and does the work of loading a single image into
-        # a Pytorch Tensor
-        img = Image.open(filepath)
-        transform = transforms.Compose([
-            transforms.PILToTensor()
-        ])
-        img_tensor = transform(img)
-        return img_tensor
+def load_image_tensor(filepath, threshold):
+    img = Image.open(filepath)
+    transform = transforms.Compose([
+        transforms.PILToTensor()
+    ])
+    img_tensor = transform(img)
+    img_tensor = torch.where(img_tensor<threshold, 0, img_tensor) # ask class how we can fix this?
+    return img_tensor
 
+
+
+def custom_collate_fn(batch):
     image_batch_tensor = torch.FloatTensor(len(batch), 28, 28) # We define a tensor of the same size as our image batch to store loaded images into
     image_tensors = []
     labels = []
     for item in batch:
-        image_tensor = load_image_tensor(f"{DATASET_PREFIX}/{item[0]}") # load a single image
-        image_tensor = torch.where(image_tensor<50, 0, image_tensor)
+        image_tensor = load_image_tensor(f"{DATASET_PREFIX}/{item[0]}", threshold=50) # load a single image
         image_tensors.append(image_tensor) # put image into a list 
         labels.append(item[1]) # put the same image's label into another list
 
 
     torch.cat(image_tensors, out=image_batch_tensor) # torch.cat simply concatenates a list of individual tensors (image_tensors) into a single Pytorch tensor (image_batch_tensor)
-    label_batch_tensor = torch.LongTensor(labels) # use the label list to create a torch tensor of Long ints
+    label_batch_tensor = torch.LongTensor(labels) # use the label list to create a torch tensor of ints
     return (image_batch_tensor, label_batch_tensor)
 
 
