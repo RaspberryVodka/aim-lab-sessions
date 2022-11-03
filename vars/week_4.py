@@ -11,10 +11,11 @@ from PIL import Image
 
 # Week 4 imports
 import torch.nn as nn
-from torch.optim.lr_scheduler import ExponentialLR
 from torch.optim import SGD
 from torchsummary import summary
 
+# Week 5 imports
+from torch.optim.lr_scheduler import ExponentialLR
 
 epochs = 5
 batch_sz = 32

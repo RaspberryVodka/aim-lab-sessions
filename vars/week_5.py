@@ -6,14 +6,16 @@ import matplotlib.pyplot as plt
 import torch
 import torchvision.transforms as transforms
 from torch.utils.data import Dataset, DataLoader, random_split
-from PIL import Image
 import PIL
+from PIL import Image
 
 # Week 4 imports
 import torch.nn as nn
-from torch.optim.lr_scheduler import ExponentialLR
 from torch.optim import SGD
 from torchsummary import summary
+
+# Week 5 imports
+from torch.optim.lr_scheduler import ExponentialLR
 
 gamma = 0.5
 
