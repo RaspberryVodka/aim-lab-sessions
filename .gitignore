@@ -4,3 +4,4 @@ data/**/*.csv
 data/**/*.jpg
 runs/
 saved_models/
+*.old.*
