@@ -6,3 +6,4 @@ runs/
 saved_models/
 lightning_logs/
 *.old.*
+*.tar*
