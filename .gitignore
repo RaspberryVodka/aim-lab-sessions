@@ -5,3 +5,6 @@ data/**/*.jpg
 runs/
 saved_models/
 *.gz
+lightning_logs/
+*.old.*
+*.tar*
