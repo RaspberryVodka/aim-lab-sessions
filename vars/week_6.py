@@ -8,14 +8,18 @@ import torchvision.transforms as transforms
 from torch.utils.data import Dataset, DataLoader, random_split
 import PIL
 from PIL import Image
+from vars.week_3 import *
 
 # Week 4 imports
 import torch.nn as nn
 from torch.optim import SGD
 from torchsummary import summary
+from vars.week_4 import *
 
 # Week 5 imports
 from torch.optim.lr_scheduler import ExponentialLR
+from vars.week_5 import *
+
 # Week 6 imports 
 import os
 from torch.utils.tensorboard import SummaryWriter

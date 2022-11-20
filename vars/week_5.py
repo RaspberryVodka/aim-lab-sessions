@@ -8,12 +8,13 @@ import torchvision.transforms as transforms
 from torch.utils.data import Dataset, DataLoader, random_split
 import PIL
 from PIL import Image
+from vars.week_3 import *
 
 # Week 4 imports
 import torch.nn as nn
 from torch.optim import SGD
 from torchsummary import summary
-
+from vars.week_4 import *
 # Week 5 imports
 from torch.optim.lr_scheduler import ExponentialLR
 
@@ -33,7 +34,7 @@ def get_simple_conv_net():
 
 
 # Because the model now expects a 3-d input (channels * width * height), we need to modify our training function:
-def train_model_gpu_lr_conv(device, model, epochs, train_dl, optimiser, lr_scheduler):
+def train_model_gpu_lr_conv(epochs, train_dl, optimiser, lr_scheduler):
     msg = ""
     for epoch in range(epochs):
         total_steps = len(train_dl)
@@ -43,8 +44,8 @@ def train_model_gpu_lr_conv(device, model, epochs, train_dl, optimiser, lr_sched
         model.train()
         for batch_num, (image_batch, label_batch) in enumerate(train_dl):
             batch_sz = len(image_batch)
-            label_batch = label_batch.to(device)
-            image_batch = image_batch.to(device).reshape(batch_sz, 1, 28, 28)  # 1 channel, 28 * 28 pixels
+            label_batch = label_batch.to(DEVICE)
+            image_batch = image_batch.to(DEVICE).reshape(batch_sz, 1, 28, 28)  # 1 channel, 28 * 28 pixels
             output = model(image_batch)
             losses = nn.CrossEntropyLoss()(output, label_batch)
                         
@@ -68,7 +69,7 @@ def train_model_gpu_lr_conv(device, model, epochs, train_dl, optimiser, lr_sched
         
         
 
-def train_model_gpu_lr_conv_valid(device, model, epochs, dataloaders, optimiser, lr_scheduler):
+def train_model_gpu_lr_conv_valid(model, epochs, dataloaders, optimiser, lr_scheduler):
     msg = ""
     for epoch in range(epochs):        
         #######################TRAINING STEP###################################
@@ -81,8 +82,8 @@ def train_model_gpu_lr_conv_valid(device, model, epochs, dataloaders, optimiser,
         
         for batch_num, (image_batch, label_batch) in enumerate(train_dl):
             batch_sz = len(image_batch)
-            label_batch = label_batch.to(device)
-            image_batch = image_batch.to(device).reshape(batch_sz, 1, 28, 28) 
+            label_batch = label_batch.to(DEVICE)
+            image_batch = image_batch.to(DEVICE).reshape(batch_sz, 1, 28, 28) 
             output = model(image_batch)
             losses = nn.CrossEntropyLoss()(output, label_batch)
                         
@@ -114,8 +115,8 @@ def train_model_gpu_lr_conv_valid(device, model, epochs, dataloaders, optimiser,
         
         for batch_num, (image_batch, label_batch) in enumerate(val_dl):
             batch_sz = len(image_batch)
-            label_batch = label_batch.to(device)
-            image_batch = image_batch.to(device).reshape(batch_sz, 1, 28, 28) 
+            label_batch = label_batch.to(DEVICE)
+            image_batch = image_batch.to(DEVICE).reshape(batch_sz, 1, 28, 28) 
             
             with torch.no_grad(): # no_grad disables gradient calculations, which are not needed when evaluating the model. This speeds up the calculations
                 output = model(image_batch)
